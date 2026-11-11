@@ -48,3 +48,5 @@ Cada fichero de tests **nuevo** hay que añadirlo a `add_executable(tests_gestor
 2. Si un test sale en rojo, **¿está mal el test o está mal la clase?** Leed el comentario del `.hpp`: es lo que manda.
 3. Si está mal la clase: haced **primero el commit del test** (`test(libro): ...`) y `git push` → el CI de *Actions* sale en **rojo**.
 4. Arreglad la clase, comprobad que todo sale en verde y haced el commit del arreglo (`fix(libro): ...`) y `git push` → **verde**.
+
+Si lleváis más de 10 minutos atascados con un rojo, al final de la guía están las **Pistas**: qué está mal en cada error, por qué y cómo se arregla.
