@@ -1,11 +1,15 @@
-// src/main.cpp — prueba rápida de la clase Libro.
+// src/main.cpp — prueba rápida de Libro y Novedad, a través de punteros a la base.
 #include <iostream>
-#include "libro.hpp"
+#include <memory>
+#include <vector>
+#include "novedad.hpp"
 
 int main() {
-    Libro l(1, "El Quijote");
-    l.prestar();
-    std::cout << l.tipo() << " " << l.getCodigo() << " \"" << l.getTitulo() << "\""
-              << (l.estaPrestado() ? " (prestado)" : " (disponible)")
-              << " - multa por 4 dias: " << l.multa(4) << " EUR\n";
+    std::vector<std::unique_ptr<Libro>> libros;
+    libros.push_back(std::make_unique<Libro>(1, "El Quijote"));
+    libros.push_back(std::make_unique<Novedad>(3, "Dune"));
+    for (const auto& l : libros) {
+        std::cout << l->tipo() << " " << l->getCodigo() << " \"" << l->getTitulo() << "\""
+                  << " - multa por 7 dias: " << l->multa(7) << " EUR\n";
+    }
 }

@@ -17,6 +17,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # ----------------------------------------------------------------------------
 set(FUENTES
     src/libro.cpp
+    src/novedad.cpp
 )
 
 # Warnings activados: el compilador como aliado.
