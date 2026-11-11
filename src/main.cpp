@@ -1,15 +1,17 @@
-// src/main.cpp — prueba rápida de Libro y Novedad, a través de punteros a la base.
+// src/main.cpp — una biblioteca de ejemplo: presta el primer libro.
 #include <iostream>
-#include <memory>
-#include <vector>
+#include "biblioteca.hpp"
 #include "novedad.hpp"
 
 int main() {
-    std::vector<std::unique_ptr<Libro>> libros;
-    libros.push_back(std::make_unique<Libro>(1, "El Quijote"));
-    libros.push_back(std::make_unique<Novedad>(3, "Dune"));
-    for (const auto& l : libros) {
-        std::cout << l->tipo() << " " << l->getCodigo() << " \"" << l->getTitulo() << "\""
-                  << " - multa por 7 dias: " << l->multa(7) << " EUR\n";
+    Biblioteca biblioteca;
+    biblioteca.anadir(std::make_unique<Libro>(1, "El Quijote"));
+    biblioteca.anadir(std::make_unique<Libro>(2, "La Regenta"));
+    biblioteca.anadir(std::make_unique<Novedad>(3, "Dune"));
+
+    for (const auto& l : biblioteca.libros()) {
+        std::cout << "  " << l->tipo() << " " << l->getCodigo() << " \"" << l->getTitulo() << "\"\n";
     }
+    biblioteca.prestar(1);
+    std::cout << "Disponibles: " << biblioteca.disponibles() << " de " << biblioteca.total() << "\n";
 }
