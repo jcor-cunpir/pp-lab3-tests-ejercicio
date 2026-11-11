@@ -19,6 +19,7 @@ set(FUENTES
     src/libro.cpp
     src/novedad.cpp
     src/biblioteca.cpp
+    src/almacen.cpp
 )
 
 # Warnings activados: el compilador como aliado.
